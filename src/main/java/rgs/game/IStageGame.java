@@ -10,4 +10,8 @@ public interface IStageGame {
 
     public PayoffMatrix getPayoffMatrix(); // return the payoff matrix
 
+    public int generousAction(); // return the action that benifits all
+
+    public int selfishAction(); // return the action that benifits oneself
+
 }

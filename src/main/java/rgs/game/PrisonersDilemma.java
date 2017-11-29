@@ -2,8 +2,6 @@ package rgs.game;
 
 public class PrisonersDilemma extends AStageGame {
 
-    private PayoffMatrix payoffMatrix;
-
     public PrisonersDilemma() {
 	actionDimension = 2;
 	payoffMatrix = new PayoffMatrix(actionDimension);
@@ -17,16 +15,4 @@ public class PrisonersDilemma extends AStageGame {
 	payoffMatrix.matrix[1][1][1] = 1;
     }
 
-    @Override
-    public int[] getScores(int a1, int a2) {
-	int[] scores = new int[2];
-	scores[0] = payoffMatrix.matrix[a1][a2][0];
-	scores[1] = payoffMatrix.matrix[a1][a2][1];
-	return scores;
-    }
-
-    @Override
-    public PayoffMatrix getPayoffMatrix() {
-	return payoffMatrix;
-    }
 }
