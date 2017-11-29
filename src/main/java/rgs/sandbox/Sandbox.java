@@ -130,7 +130,7 @@ public class Sandbox {
 
     private static IPlayer[] evolutionalRobin(IPlayer[] playerPool, int nPlayer, IStageGame stageGame, int maxTime, int nEvo) {
 	for(int i=0; i<nEvo; i++) {
-	    System.out.print("Round " + i);
+	    System.out.print("Round, " + i);
 	    Map<IPlayer, Integer[]> distribution = roundRobin(playerPool, nPlayer, new PrisonersDilemma(), maxTime);
 
 	    double maxScore = Double.MIN_VALUE;
@@ -162,27 +162,24 @@ public class Sandbox {
     public static void main(String[] args) {
 	System.out.println("sandbox start running.");
 
-	// repeatedGame(new TitForTat(), new Selfishman(), new PrisonersDilemma(), 1000);
+	// repeatedGame(new TitForTat(), new Recognizer(), new PrisonersDilemma(), 1000);
 
+	
 	int s = 10;
 	int iter = 100;
 	int nPlayer = 4;
 	IPlayer[] playerPool = new IPlayer[nPlayer*s];
 	for(int i=0; i<1*s; i++)
-	    playerPool[i] = new Globalist();
+	    playerPool[i] = new Recognizer();
 	for(int i=1*s; i<2*s; i++)
 	    playerPool[i] = new Selfishman();
 	for(int i=2*s; i<3*s; i++)
-	    playerPool[i] = new Recognizer();
+	    playerPool[i] = new Globalist();
 	for(int i=3*s; i<4*s; i++)
 	    playerPool[i] = new TitForTat();
-	
-	
-	// roundRobin(playerPool, 3*s, new PrisonersDilemma(), iter);
-	
 
 	
-	IPlayer[] finalPlayerPool = evolutionalRobin(playerPool, nPlayer*s, new PrisonersDilemma(), iter, 30);
+	IPlayer[] finalPlayerPool = evolutionalRobin(playerPool, nPlayer*s, new PrisonersDilemma(), iter, s*(nPlayer-1));
 	
 
     }

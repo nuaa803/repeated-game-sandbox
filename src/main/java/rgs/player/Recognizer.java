@@ -56,6 +56,12 @@ public class Recognizer extends APlayer {
 	    code[i] = buf%d;
 	    buf /= d;
 	}
+	/*
+	System.out.print("ID:" + ID + "\tcode:");
+	for(int eachC : code)
+	    System.out.print(eachC + ",");
+	System.out.println();
+	*/
 	return code;
     }
 
@@ -80,14 +86,11 @@ public class Recognizer extends APlayer {
 
 	    boolean friend = false;
 	    // check code
-	    if(friends.get(opnID) >= 2) {
+	    if(friends.get(opnID) >= 3) {
 		// code checked, let's check his last action
-		if(lastOpnAct != cooperateAction) {
+		if(lastOpnAct != cooperateAction && lastOpnAct != -1) {
 		    // he betraied me, enemy
 		    friend = false;
-		    System.out.println(opnID + " betraied me!");
-		    if(opnID>=20 && opnID <=29)
-			System.exit(0);
 		} else {
 		    // friend
 		    friend = true;
@@ -101,12 +104,19 @@ public class Recognizer extends APlayer {
 		} else {
 		    // code check failed, enemy
 		    friend = false;
+		    /*
 		    System.out.println(opnID + " code wrong!");
-		    if(opnID>=20 && opnID <=29)
-			System.exit(0);
+		    System.out.println(getCode(opnID)[0] +","+ getCode(opnID)[1] + ","+ getCode(opnID)[2]);
+		    System.out.println("num:" + friends.get(opnID));
+		    for(int eachC : opnCode)
+			System.out.println(eachC);
+		    System.out.println("Expected:" + opnCode[friends.get(opnID)]);
+		    System.out.println("Get:" + lastOpnAct);
+		    System.exit(0);
 		    //System.out.println("friends.get(opnID) " + friends.get(opnID));
 		    //System.out.println("opnCode[friends.get(opnID) " + opnCode[friends.get(opnID)]);
 		    //System.out.println("lastOpnAct " + lastOpnAct);
+		    */
 		}
 	    }
 
@@ -134,7 +144,7 @@ public class Recognizer extends APlayer {
 	    friends = new HashMap<Integer, Integer>();
 	    myCode = getCode(getID());
 	}
-	return (isFriend(opnID) ? (friends.get(opnID)>=2 ? cooperateAction : myCode[friends.get(opnID)]) : offenceAction);
+	return (isFriend(opnID) ? (friends.get(opnID)>=3 ? cooperateAction : myCode[friends.get(opnID)]) : offenceAction);
     }
     
     public IPlayer duplicate() {
