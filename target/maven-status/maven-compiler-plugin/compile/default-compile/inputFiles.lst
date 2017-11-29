@@ -1,11 +1,13 @@
+/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/game/AStageGame.java
+/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/Idiot.java
+/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/sandbox/Sandbox.java
+/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/TitForTat.java
+/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/Union.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/game/IStageGame.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/game/PayoffMatrix.java
-/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/game/AStageGame.java
-/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/sandbox/Sandbox.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/game/PrisonersDilemma.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/Recognizer.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/Globalist.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/IPlayer.java
-/media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/TitForTat.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/Selfishman.java
 /media/uraplutonium/Workstation/Workspace/repeated-game-sandbox/src/main/java/rgs/player/APlayer.java

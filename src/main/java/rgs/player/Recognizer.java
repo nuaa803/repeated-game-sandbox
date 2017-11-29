@@ -14,13 +14,17 @@ public class Recognizer extends APlayer {
 
     protected static int cooperateAction = -1;
     protected static int offenceAction = -1;
-    private int[] myCode;
+    protected int[] myCode;
     
-    private Set<Integer> enemies;
-    private Map<Integer, Integer> friends;
+    protected Set<Integer> enemies;
+    protected Map<Integer, Integer> friends;
     
     public Recognizer() {
 	super("Recognizer");
+    }
+
+    protected Recognizer(String alias) {
+	super(alias);
     }
 
     protected void computeAction() {
@@ -48,7 +52,7 @@ public class Recognizer extends APlayer {
 	}
     }
 
-    private int[] getCode(int ID) {
+    protected int[] getCode(int ID) {
 	int[] code = new int[3];
 	int d = Sandbox.getStageGame().actionDimension();
 	int buf = ID;
@@ -65,9 +69,15 @@ public class Recognizer extends APlayer {
 	return code;
     }
 
-    protected boolean isFriend(int opnID) {
+    /**
+     * @return whether opnID is a friend.
+     *         0 indicates opnID is NOT a Recognizer;
+     *         1 indicates opnID's code is still under checking
+     *         2 indicates opnID's code is already checked
+     */
+    protected int isRecognizer(int opnID) {
 	if(enemies.contains(opnID)) // recognized enemy
-	    return false;
+	    return 0;
 	else if(friends.keySet().contains(opnID)) { // temporary friend
 	    // get code and opn's last action
 	    int[] opnCode = getCode(opnID);
@@ -84,52 +94,39 @@ public class Recognizer extends APlayer {
 		}
 	    }
 
-	    boolean friend = false;
+	    int isRec = -1;
 	    // check code
 	    if(friends.get(opnID) >= 3) {
 		// code checked, let's check his last action
 		if(lastOpnAct != cooperateAction && lastOpnAct != -1) {
 		    // he betraied me, enemy
-		    friend = false;
+		    isRec = 0;
 		} else {
-		    // friend
-		    friend = true;
+		    // remain friend
+		    isRec = 2;
 		}
 	    } else {
 		// code unchecked
 		if(opnCode[friends.get(opnID)] == lastOpnAct) {
 		    // pass
-		    friend = true;
 		    friends.put(opnID, (friends.get(opnID)+1));
+		    isRec = (friends.get(opnID)>=3 ? 2 : 1);
 		} else {
-		    // code check failed, enemy
-		    friend = false;
-		    /*
-		    System.out.println(opnID + " code wrong!");
-		    System.out.println(getCode(opnID)[0] +","+ getCode(opnID)[1] + ","+ getCode(opnID)[2]);
-		    System.out.println("num:" + friends.get(opnID));
-		    for(int eachC : opnCode)
-			System.out.println(eachC);
-		    System.out.println("Expected:" + opnCode[friends.get(opnID)]);
-		    System.out.println("Get:" + lastOpnAct);
-		    System.exit(0);
-		    //System.out.println("friends.get(opnID) " + friends.get(opnID));
-		    //System.out.println("opnCode[friends.get(opnID) " + opnCode[friends.get(opnID)]);
-		    //System.out.println("lastOpnAct " + lastOpnAct);
-		    */
+		    // code check failed, not recognizer
+		    isRec = 0;
 		}
 	    }
 
-	    if(!friend) {
+	    if(isRec == 0) {
 		// he failed the code check, or betraied me
 		friends.remove(opnID);
 		enemies.add(opnID);
 	    }
-	    return friend;
+	    return isRec;
 	} else {
 	    // stranger
 	    friends.put(opnID, new Integer(0));
-	    return true;
+	    return 1;
 	}
     }
 
@@ -144,7 +141,19 @@ public class Recognizer extends APlayer {
 	    friends = new HashMap<Integer, Integer>();
 	    myCode = getCode(getID());
 	}
-	return (isFriend(opnID) ? (friends.get(opnID)>=3 ? cooperateAction : myCode[friends.get(opnID)]) : offenceAction);
+	int action = -1;
+	switch(isRecognizer(opnID)) {
+	case 0: // not recognizer
+	    action = offenceAction;
+	    break;
+	case 1: // checking code
+	    action = myCode[friends.get(opnID)];
+	    break;
+	case 2: // maybe recognizer
+	    action = cooperateAction;
+	    break;
+	}
+	return action;
     }
     
     public IPlayer duplicate() {

@@ -165,21 +165,25 @@ public class Sandbox {
 	// repeatedGame(new TitForTat(), new Recognizer(), new PrisonersDilemma(), 1000);
 
 	
-	int s = 10;
+	int s = 5;
 	int iter = 100;
-	int nPlayer = 4;
+	int nPlayer = 5;
 	IPlayer[] playerPool = new IPlayer[nPlayer*s];
 	for(int i=0; i<1*s; i++)
-	    playerPool[i] = new Recognizer();
+	    playerPool[i] = new Idiot();
 	for(int i=1*s; i<2*s; i++)
 	    playerPool[i] = new Selfishman();
 	for(int i=2*s; i<3*s; i++)
 	    playerPool[i] = new Globalist();
 	for(int i=3*s; i<4*s; i++)
 	    playerPool[i] = new TitForTat();
+	for(int i=4*s; i<5*s; i++)
+	    playerPool[i] = new Union();
+	//for(int i=5*s; i<6*s; i++)
+	//   playerPool[i] = new Recognizer();
 
 	
-	IPlayer[] finalPlayerPool = evolutionalRobin(playerPool, nPlayer*s, new PrisonersDilemma(), iter, s*(nPlayer-1));
+	IPlayer[] finalPlayerPool = evolutionalRobin(playerPool, nPlayer*s, new PrisonersDilemma(), iter, s*(nPlayer-1)+1);
 	
 
     }
