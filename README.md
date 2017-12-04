@@ -16,5 +16,24 @@
 
 ## 3. 沙盒接口
 
+repeated-game-sandbox（rgs）包含三个包：sandbox、game和player。
+
+### game
+
+game包中包含了阶段博弈接口IStageGame、阶段博弈抽象类AStageGame（实现了IStageGame接口）、收益矩阵类PayoffMatrix，以及继承于AStageGame的子类，如囚徒困境PrisonersDilemma。
+
+我们希望此沙盒能够不仅仅用于模拟以囚徒困境为阶段博弈的重复博弈问题，也希望能够使其有能力扩展到其他更为复杂的博弈问题。因此，设计了阶段博弈接口IStageGame来规定一次基础博弈必须实现的行为，用其抽象子类AStageGame提供了一些常用方法，将需要实现什么博弈问题开放给rgs使用者。现阶段rgs仅实现了囚徒困境这一种博弈问题。
+
++ IStageGame
+
++ AStageGame
+
++ PayoffMatrix
+
+
+### player
+
+### sandbox
+
 ## 4. 示例说明
 
