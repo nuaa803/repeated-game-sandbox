@@ -26,11 +26,33 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 + IStageGame (interface)
 
 + AStageGame (abstract class)
+实现了IStageGame接口。
 
 + PayoffMatrix (class)
 
+已实现的阶段博弈类：
+
++ PrisonersDilemma (class)
+继承于AStageGame抽象类。
 
 ### 3.2 player (package)
+
++ IPlayer (interface)
+
++ APlayer (abstract class)
+实现了IPlayer接口。
+
+已实现的玩家类：
+
++ Globalist (全球主义者)
+
++ Selfishman (自私者)
+
++ TitForTat (以牙还牙)
+
++ Idiot (傻逼)
+
++ Recognizer (识别者)
 
 ### 3.3 sandbox (package)
 
