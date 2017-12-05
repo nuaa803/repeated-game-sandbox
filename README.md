@@ -23,47 +23,47 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 
 我们希望此沙盒能够不仅仅用于模拟以囚徒困境为阶段博弈的重复博弈问题，也希望能够使其有能力扩展到其他更为复杂的博弈问题。因此，设计了阶段博弈接口IStageGame来规定一次基础博弈必须实现的行为，用其抽象子类AStageGame提供了一些常用方法，将需要实现什么博弈问题开放给rgs使用者。目前rgs仅实现了囚徒困境这一种博弈问题。
 
-+ *IStageGame* (interface)
++ **IStageGame** (interface)
 
-+ *AStageGame* (abstract class)
++ **AStageGame** (abstract class)
 
 	实现了IStageGame接口。
 
-+ *PayoffMatrix* (class)
++ **PayoffMatrix** (class)
 
 已实现的阶段博弈类：
 
-+ *PrisonersDilemma* (囚徒困境)
++ **PrisonersDilemma** (囚徒困境)
 
 	继承于AStageGame抽象类。
 
 ### 3.2 player (package)
 
-+ *IPlayer* (interface)
++ **IPlayer** (interface)
 
-+ *APlayer* (abstract class)
++ **APlayer** (abstract class)
 
 	实现了IPlayer接口。
 
 已实现的玩家类：
 
-+ *Globalist (全球主义者)*：“为全人类的共同利益而奋斗！”
++ **Globalist (全球主义者)**：“为全人类的共同利益而奋斗！”
 
 	继承于APlayer抽象类。
 
-+ *Selfishman (自私者)*：“人不为己，天诛地灭”
++ **Selfishman (自私者)**：“人不为己，天诛地灭”
 
 	继承于APlayer抽象类。
 
-+ *TitForTat (以牙还牙)*：“以牙还牙，以眼还眼”
++ **TitForTat (以牙还牙)**：“以牙还牙，以眼还眼”
 
 	继承于APlayer抽象类。
 
-+ *Idiot (傻逼)*：“@$%^&!@@*#&????”
++ **Idiot (傻逼)**：“@$%^&!@@*#&????”
 
 	继承于APlayer抽象类。
 
-+ *Recognizer (识别者)*：“我是卖木梳的——同志，我可找到你了！”
++ **Recognizer (识别者)**：“我是卖木梳的——同志，我可找到你了！”
 
 	继承于APlayer抽象类。
 
