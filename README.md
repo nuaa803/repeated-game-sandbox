@@ -26,7 +26,8 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 + IStageGame (interface)
 
 + AStageGame (abstract class)
-实现了IStageGame接口。
+
+	实现了IStageGame接口。
 
 + PayoffMatrix (class)
 
@@ -40,7 +41,8 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 + IPlayer (interface)
 
 + APlayer (abstract class)
-实现了IPlayer接口。
+
+	实现了IPlayer接口。
 
 已实现的玩家类：
 
