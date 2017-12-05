@@ -34,7 +34,8 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 已实现的阶段博弈类：
 
 + PrisonersDilemma (class)
-继承于AStageGame抽象类。
+
+	继承于AStageGame抽象类。
 
 ### 3.2 player (package)
 
@@ -46,15 +47,25 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 
 已实现的玩家类：
 
-+ Globalist (全球主义者)
++ Globalist (全球主义者)：“为全人类的共同利益而奋斗！”
 
-+ Selfishman (自私者)
+	继承于APlayer抽象类。
 
-+ TitForTat (以牙还牙)
++ Selfishman (自私者)：“人不为己，天诛地灭”
 
-+ Idiot (傻逼)
+	继承于APlayer抽象类。
 
-+ Recognizer (识别者)
++ TitForTat (以牙还牙)：“以牙还牙，以眼还眼”
+
+	继承于APlayer抽象类。
+
++ Idiot (傻逼)：“@$%^&!@@*#&????”
+
+	继承于APlayer抽象类。
+
++ Recognizer (识别者)：“我是卖木梳的——同志，我可找到你了！”
+
+	继承于APlayer抽象类。
 
 ### 3.3 sandbox (package)
 
