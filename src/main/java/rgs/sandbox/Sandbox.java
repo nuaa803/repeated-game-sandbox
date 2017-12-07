@@ -10,7 +10,9 @@ import rgs.player.*;
 
 public class Sandbox {
     private static int clock = 0;
-    private static int maxT;
+    private static int maxT = 0;
+    private static int nEvo = 0;
+    private static int maxE = 0;
     private static int nPlayer = 0;
     private static IStageGame sGame;
     private static List<Integer[]> history; // time, p1, p2, a1, a2, s1, s2
@@ -21,6 +23,14 @@ public class Sandbox {
 
     public static int getMaxT() {
 	return maxT;
+    }
+
+    public static int getEvo() {
+	return nEvo;
+    }
+
+    public static int getMaxE() {
+	return maxE;
     }
 
     public static int getNumPlayer() {
@@ -149,9 +159,10 @@ public class Sandbox {
 	return distribution;
     }
 
-    private static IPlayer[] evolutionalRobin(IPlayer[] playerPool, int np, IStageGame stageGame, int maxTime, int nEvo) {
-	for(int i=0; i<nEvo; i++) {
-	    System.out.print("Round, " + i + ",================");
+    private static IPlayer[] evolutionalRobin(IPlayer[] playerPool, int np, IStageGame stageGame, int maxTime, int maxEvo) {
+	maxE = maxEvo;
+	for(nEvo=0; nEvo<maxEvo; nEvo++) {
+	    System.out.print("Round, " + nEvo + ",================");
 	    Map<IPlayer, Integer[]> distribution = roundRobin(playerPool, np, new PrisonersDilemma(), maxTime);
 
 	    double maxScore = Double.MIN_VALUE;

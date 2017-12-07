@@ -11,7 +11,7 @@
 
 ## 2. 编译和执行
 
-重复博弈沙盒以Java编写，可以使用maven编译（已提供pom.xml文件），或由eclipse打开编译运行（已提供.project文件）。
+重复博弈沙盒以Java编写，可以使用maven编译并运行jar包（已提供pom.xml文件），或由eclipse导入项目后编译运行（已提供.project文件）。
 
 ## 3. 沙盒接口
 
@@ -25,6 +25,18 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 
 + **IStageGame** (interface)
 
+	IStageGame是定义了阶段博弈的接口。一个阶段博弈
+
+    public int actionDimension(); // return the max num of action: 0, 1, n-1
+
+    public int[] getScores(int a1, int a2); // return the scores of playerA and playerB if they took actionA and actionB
+
+    public PayoffMatrix getPayoffMatrix(); // return the payoff matrix
+
+    public int generousAction(); // return the action that benifits all
+
+	public int selfishAction(); // return the action that benifits oneself
+
 + **AStageGame** (abstract class)
 
 	实现了IStageGame接口。
@@ -33,7 +45,7 @@ game包中的类用来定义所要进行的博弈的规则是什么。包含了�
 
 已实现的阶段博弈类：
 
-+ **PrisonersDilemma** (囚徒困境)
++ **PrisonersDilemma (囚徒困境)**
 
 	继承于AStageGame抽象类。
 

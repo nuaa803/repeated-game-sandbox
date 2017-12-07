@@ -101,8 +101,7 @@ public class Recognizer extends APlayer {
 	int action = -1;
 	switch(isRecognizer(opnID)) {
 	case 0: // not recognizer
-	    int lastOpnAct = Sandbox.getLastAction(opnID, getID());
-	    action = (lastOpnAct == -1 ? Sandbox.getStageGame().generousAction() : lastOpnAct);
+	    action = Sandbox.getStageGame().selfishAction();
 	    break;
 	case 1: // checking code
 	    action = myCode[friends.get(opnID)];
